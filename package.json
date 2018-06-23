@@ -1,0 +1,22 @@
+{
+  "name": "newmanmockresponses",
+  "version": "1.0.0",
+  "description": "mock response fetcher for newman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "newmanmockresponses": "./index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.15.1",
+    "progress": "^2.0.0",
+    "superagent": "^3.8.3"
+  }
+}
