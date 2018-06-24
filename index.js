@@ -6,10 +6,10 @@ var program = require('commander');
 const chalk = require('chalk');
 
  program
+ .command('collection [collection...]')
   .option('-o, --output <output>', 'The output path')
   .option('-e, --environment <environment>', 'the path to the environment file')
   .option('-v, --verbose', 'verbose logging')
-  .command('collection [collection...]')
   .action(function (collection, options) {
     if (collection) {
 
