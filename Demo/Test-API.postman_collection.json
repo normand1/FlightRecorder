@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "c70ae20e-513c-47d5-a839-07192aa3c497",
+		"name": "Test-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "awww",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{reddit-url}}/Awww.json",
+					"host": [
+						"{{reddit-url}}"
+					],
+					"path": [
+						"Awww.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://swapi.co/api/people/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{swapi-url}}/people/1",
+					"host": [
+						"{{swapi-url}}"
+					],
+					"path": [
+						"people",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1963f22-0a81-465e-9861-49e8443af5f9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "280e0ef7-accf-4e60-827c-e6976716af06",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
