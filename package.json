@@ -1,13 +1,17 @@
 {
   "name": "fltrec",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/normand1/FlightRecorder"
+  },
   "version": "1.0.0",
   "description": "mock response fetcher for newman",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "David Norman",
+  "license": "MIT",
   "bin": {
     "fltrec": "./index.js"
   },
