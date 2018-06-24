@@ -5,7 +5,7 @@
   , "url" : "https://github.com/normand1/FlightRecorder"
   },
   "version": "1.0.0",
-  "description": "mock response fetcher for newman",
+  "description": "FlightRecorder (fltrec) is a solution for quickly saving and updating mock data json responses from your APIs. ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
