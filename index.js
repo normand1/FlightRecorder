@@ -12,6 +12,9 @@ const chalk = require('chalk');
   .option('-v, --verbose', 'verbose logging')
   .action(function (collection, options) {
     if (collection) {
+
+        console.log('🛫   Flight Recorder Started!  🛫');
+
         collection.forEach(function (collect) {
         newman.run({
             collection: require(collect),
@@ -36,7 +39,7 @@ const chalk = require('chalk');
                     const outputFileName = buildFileNameFromName(options.output, execution.item.name);
                     fs.writeFile(outputFileName, execution.response.stream, function (error) {
                             if (error) { console.error("error writing output" + error); }
-                            console.log(chalk.green(`Saved response from ${execution.item.name} to ${outputFileName}`));
+                            console.log(chalk.green(`📼   Saved response from ${execution.item.name} to ${outputFileName} 📼`));
                     });
                 });
             }

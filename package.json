@@ -1,5 +1,5 @@
 {
-  "name": "newmanmockresponses",
+  "name": "fltrec",
   "version": "1.0.0",
   "description": "mock response fetcher for newman",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "newmanmockresponses": "./index.js"
+    "fltrec": "./index.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",
