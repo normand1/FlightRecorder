@@ -1,4 +1,5 @@
-# FlightRecorder ✈️📼
+![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/FlightRecLogo.png)
+
 
 FlightRecorder (fltrec) is a solution for quickly saving and updating mock data json responses from your APIs.
 FlightRecorder is built around the [Postman Newman CLI Tool](https://github.com/postmanlabs/newman).
