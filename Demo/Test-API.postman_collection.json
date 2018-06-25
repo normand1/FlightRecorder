@@ -24,19 +24,19 @@
 			"response": []
 		},
 		{
-			"name": "https://swapi.co/api/people/1",
+			"name": "films_2",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{swapi-url}}/people/1",
+					"raw": "{{swapi-url}}/films/2",
 					"host": [
 						"{{swapi-url}}"
 					],
 					"path": [
-						"people",
-						"1"
+						"films",
+						"2"
 					]
 				}
 			},

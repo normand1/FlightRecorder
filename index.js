@@ -14,6 +14,7 @@ const chalk = require('chalk');
     if (collection) {
 
         console.log('🛫   Flight Recorder Started!  🛫');
+        console.log(options);
 
         collection.forEach(function (collect) {
         newman.run({
@@ -45,13 +46,15 @@ const chalk = require('chalk');
             }
         });
       });
-    }  
+    } else {
+        console.log(chalk.red("No collection path found"));
+    } 
   });
   
   program.parse(process.argv);
 
 function buildFileNameFromName(outputPath, requestName) {
-    return outputPath + `${requestName}.json`
+    return outputPath + `/${requestName}.json`
 }
 
 function buildFileNameFromPath(pathVars) {
