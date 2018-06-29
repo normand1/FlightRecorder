@@ -22,3 +22,6 @@ Simply reference your postman collection and environment files while running Fli
   Commands:
 
     collection [collection...]
+
+# KNOWN ISSUES:
+1) Currently all paths must be passed as absolute paths rather than relative paths.
