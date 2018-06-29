@@ -1,0 +1,63 @@
+
+import Foundation
+import OHHTTPStubs
+
+public class MockNetworkRequestManager {
+
+    public  static var sharedManager = MockNetworkRequestManager()
+
+    {{#item}}
+    var {{name}}Stub: OHHTTPStubsDescriptor!
+    {{/item}}
+
+    // MARK: Helper Functions
+
+    init() {
+        OHHTTPStubs.onStubActivation { (request: URLRequest, stub: OHHTTPStubsDescriptor, response: OHHTTPStubsResponse) in
+            print("[OHHTTPStubs] Request to \(String(describing: request.url)) has been stubbed with \(String(describing: stub.name))")
+        }
+    }
+
+    public func stopAllMockEndpoints() {
+        OHHTTPStubs.removeAllStubs()
+    }
+
+    func getHTTPBodyFromURLRequest(_ urlRequest: URLRequest) -> [String: AnyObject]? {
+        var jsonDict: [String: AnyObject]?
+
+        if let body = (urlRequest as NSURLRequest).ohhttpStubs_HTTPBody() {
+            do {
+                jsonDict = try JSONSerialization.jsonObject(with: body, options: []) as? [String: AnyObject]
+            } catch let error {
+                assert(false, error.localizedDescription)
+            }
+
+            return jsonDict
+        }
+
+        return nil
+    }
+}
+
+public extension MockNetworkRequestManager {
+
+    func startAllMockEndpoints() {
+
+        {{#item}}
+        // MARK: - {{name}}
+        {{name}}Stub = stub(condition: { urlRequest in
+            return (urlRequest.url?.absoluteString.containsString("{{#request.url}}{{path}}{{/request.url}}")) ?? false
+        }, response: { urlRequest in
+            guard let stubPath = OHPathForFile("{{name}}.json", type(of: self)) else {
+                return OHHTTPStubsResponse()
+            }
+            let headers: Dictionary = [{{#request.header}}"{{key}}": "{{value}}",{{/request.header}}]
+
+            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
+
+            return stubResponse
+        })
+
+        {{/item}}
+    }
+}
