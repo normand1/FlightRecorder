@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/normand1/FlightRecorder"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "FlightRecorder (fltrec) is a solution for quickly saving and updating mock data json responses from your APIs. ",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "fs": "0.0.1-security",
+    "mustache": "^2.3.0",
     "newman": "^3.9.4"
   }
 }

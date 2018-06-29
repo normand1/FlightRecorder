@@ -9,7 +9,32 @@
 			"name": "awww",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en-US"
+					},
+					{
+						"key": "Domain",
+						"value": "TEST"
+					},
+					{
+						"key": "Country-Code",
+						"value": "US"
+					},
+					{
+						"key": "Channel-Type",
+						"value": "Web"
+					},
+					{
+						"key": "Customer-IP-Address",
+						"value": "127.0.0.1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
 				"body": {},
 				"url": {
 					"raw": "{{reddit-url}}/Awww.json",
