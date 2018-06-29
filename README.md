@@ -10,18 +10,13 @@ Simply reference your postman collection and environment files while running Fli
 `npm install fltrec -g`
 
 ## How To
-  Usage: fltrec [options] [command]
+  Usage: collection [options] [collection...]
 
   Options:
 
     -o, --output <output>            The output path
-    -e, --environment <environment>  the path to the environment file
+    -e, --environment <environment>  the relative path to the environment file
     -v, --verbose                    verbose logging
+    -m, --mustache <mustache>        the relative path to the mustache template file
+    -x, --extension <extension>      extension for mustache template output (e.g. swift, kt, etc...)
     -h, --help                       output usage information
-
-  Commands:
-
-    collection [collection...]
-
-# KNOWN ISSUES:
-1) Currently all paths must be passed as absolute paths rather than relative paths.

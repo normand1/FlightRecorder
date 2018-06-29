@@ -12,9 +12,9 @@ program
 .version(require('./package.json').version)
 .command('collection [collection...]')
 .option('-o, --output <output>', 'The output path')
-.option('-e, --environment <environment>', 'the path to the environment file')
+.option('-e, --environment <environment>', 'the relative path to the environment file')
 .option('-v, --verbose', 'verbose logging')
-.option('-m, --mustache <mustache>', 'mustache template file path')
+.option('-m, --mustache <mustache>', 'the relative path to the mustache template file')
 .option('-x, --extension <extension>', 'extension for mustache template output (e.g. swift, kt, etc...)')
 .action(function (collection, options) {
 
