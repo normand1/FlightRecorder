@@ -27,7 +27,7 @@ program
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
         options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null ;
 
-        console.log('🛫   Flight Recorder Started!  🛫');
+        console.log('🚀   Flight Recorder Started!  🚀');
         
         if (!Array.isArray(collection)) {
             collection = [collection];
