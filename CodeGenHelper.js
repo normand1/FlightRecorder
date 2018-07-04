@@ -38,11 +38,11 @@ module.exports = class CodeGenHelper {
         env_collection_combined =  this.addLastHeaderToHash(env_collection_combined);
         // console.log("final:" + templateContents.toString());
         var combinedTemplateAndCollection = mustache.render(templateContents.toString(), env_collection_combined);
-        console.log("combine env + collection:" + JSON.stringify(env_collection_combined));
+        //console.log("combine env + collection:" + JSON.stringify(env_collection_combined));
         // console.log("output:" + combinedTemplateAndCollection);
-        fs.writeFile(("MockOverrides." + options.extension), combinedTemplateAndCollection, function (error) {
+        fs.writeFile((options.output + "/MockNetworkRequestManager." + options.extension), combinedTemplateAndCollection, function (error) {
             if (error) { console.error("error writing output" + error); }
-            console.log(chalk.green(`📼   Saved MockOverrides.${options.extension} to ${options.output} 📼`));
+            console.log(chalk.green(`📼   Saved MockNetworkRequestManager.${options.extension} to ${options.output} 📼`));
         });
     }
 

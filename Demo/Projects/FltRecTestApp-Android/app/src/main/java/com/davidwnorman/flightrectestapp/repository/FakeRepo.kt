@@ -7,12 +7,12 @@ import org.jetbrains.anko.doAsync
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import MockServer
+import MockNetworkRequestManager
 
 
 class FakeRepo(private val fakeService: FakeService, context: Context) {
 
-    var mockServer = MockServer(context)
+    var mockServer = MockNetworkRequestManager(context)
 
     fun getPosts(callBack: (Int?) -> Unit) {
 

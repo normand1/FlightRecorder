@@ -13,11 +13,11 @@
 		4A00EFA620EC49BF00F0B39E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A00EFA420EC49BF00F0B39E /* Main.storyboard */; };
 		4A00EFA820EC49BF00F0B39E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A00EFA720EC49BF00F0B39E /* Assets.xcassets */; };
 		4A00EFAB20EC49BF00F0B39E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A00EFA920EC49BF00F0B39E /* LaunchScreen.storyboard */; };
-		4A26ACAB20EC6F67007CC2ED /* awww.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A26ACA620EC6F67007CC2ED /* awww.json */; };
-		4A26ACAC20EC6F67007CC2ED /* MockOverrides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A26ACA720EC6F67007CC2ED /* MockOverrides.swift */; };
-		4A26ACAD20EC6F67007CC2ED /* itunessearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A26ACA820EC6F67007CC2ED /* itunessearch.json */; };
-		4A26ACAE20EC6F67007CC2ED /* films_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A26ACA920EC6F67007CC2ED /* films_2.json */; };
-		4A26ACAF20EC6F67007CC2ED /* jsonplaceholderposts.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A26ACAA20EC6F67007CC2ED /* jsonplaceholderposts.json */; };
+		4AF364BB20ED4D0100165B46 /* itunessearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF364B620ED4D0100165B46 /* itunessearch.json */; };
+		4AF364BC20ED4D0100165B46 /* awww.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF364B720ED4D0100165B46 /* awww.json */; };
+		4AF364BD20ED4D0100165B46 /* MockNetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF364B820ED4D0100165B46 /* MockNetworkRequestManager.swift */; };
+		4AF364BE20ED4D0100165B46 /* jsonplaceholderposts.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF364B920ED4D0100165B46 /* jsonplaceholderposts.json */; };
+		4AF364BF20ED4D0100165B46 /* films_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF364BA20ED4D0100165B46 /* films_2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +29,11 @@
 		4A00EFA720EC49BF00F0B39E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A00EFAA20EC49BF00F0B39E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A00EFAC20EC49BF00F0B39E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A26ACA620EC6F67007CC2ED /* awww.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awww.json; sourceTree = SOURCE_ROOT; };
-		4A26ACA720EC6F67007CC2ED /* MockOverrides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOverrides.swift; sourceTree = SOURCE_ROOT; };
-		4A26ACA820EC6F67007CC2ED /* itunessearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itunessearch.json; sourceTree = SOURCE_ROOT; };
-		4A26ACA920EC6F67007CC2ED /* films_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = films_2.json; sourceTree = SOURCE_ROOT; };
-		4A26ACAA20EC6F67007CC2ED /* jsonplaceholderposts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonplaceholderposts.json; sourceTree = SOURCE_ROOT; };
+		4AF364B620ED4D0100165B46 /* itunessearch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = itunessearch.json; sourceTree = "<group>"; };
+		4AF364B720ED4D0100165B46 /* awww.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awww.json; sourceTree = "<group>"; };
+		4AF364B820ED4D0100165B46 /* MockNetworkRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkRequestManager.swift; sourceTree = "<group>"; };
+		4AF364B920ED4D0100165B46 /* jsonplaceholderposts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jsonplaceholderposts.json; sourceTree = "<group>"; };
+		4AF364BA20ED4D0100165B46 /* films_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = films_2.json; sourceTree = "<group>"; };
 		659BA099540A77C62AE8A83C /* Pods_FltRecTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FltRecTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5255E492CF4D4944442A1A /* Pods-FltRecTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FltRecTestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FltRecTestApp/Pods-FltRecTestApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,11 +88,7 @@
 		4A00EF9F20EC49BF00F0B39E /* FltRecTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				4A26ACA620EC6F67007CC2ED /* awww.json */,
-				4A26ACA920EC6F67007CC2ED /* films_2.json */,
-				4A26ACA820EC6F67007CC2ED /* itunessearch.json */,
-				4A26ACAA20EC6F67007CC2ED /* jsonplaceholderposts.json */,
-				4A26ACA720EC6F67007CC2ED /* MockOverrides.swift */,
+				4AF364B320ED3CF400165B46 /* MockResponses */,
 				4A00EFA020EC49BF00F0B39E /* AppDelegate.swift */,
 				4A00EFA220EC49BF00F0B39E /* ViewController.swift */,
 				4A00EFA420EC49BF00F0B39E /* Main.storyboard */,
@@ -101,6 +97,18 @@
 				4A00EFAC20EC49BF00F0B39E /* Info.plist */,
 			);
 			path = FltRecTestApp;
+			sourceTree = "<group>";
+		};
+		4AF364B320ED3CF400165B46 /* MockResponses */ = {
+			isa = PBXGroup;
+			children = (
+				4AF364B720ED4D0100165B46 /* awww.json */,
+				4AF364BA20ED4D0100165B46 /* films_2.json */,
+				4AF364B620ED4D0100165B46 /* itunessearch.json */,
+				4AF364B920ED4D0100165B46 /* jsonplaceholderposts.json */,
+				4AF364B820ED4D0100165B46 /* MockNetworkRequestManager.swift */,
+			);
+			path = MockResponses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,13 +173,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF364BF20ED4D0100165B46 /* films_2.json in Resources */,
 				4A00EFAB20EC49BF00F0B39E /* LaunchScreen.storyboard in Resources */,
-				4A26ACAF20EC6F67007CC2ED /* jsonplaceholderposts.json in Resources */,
+				4AF364BE20ED4D0100165B46 /* jsonplaceholderposts.json in Resources */,
 				4A00EFA820EC49BF00F0B39E /* Assets.xcassets in Resources */,
-				4A26ACAD20EC6F67007CC2ED /* itunessearch.json in Resources */,
+				4AF364BC20ED4D0100165B46 /* awww.json in Resources */,
 				4A00EFA620EC49BF00F0B39E /* Main.storyboard in Resources */,
-				4A26ACAE20EC6F67007CC2ED /* films_2.json in Resources */,
-				4A26ACAB20EC6F67007CC2ED /* awww.json in Resources */,
+				4AF364BB20ED4D0100165B46 /* itunessearch.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A26ACAC20EC6F67007CC2ED /* MockOverrides.swift in Sources */,
+				4AF364BD20ED4D0100165B46 /* MockNetworkRequestManager.swift in Sources */,
 				4A00EFA320EC49BF00F0B39E /* ViewController.swift in Sources */,
 				4A00EFA120EC49BF00F0B39E /* AppDelegate.swift in Sources */,
 			);
