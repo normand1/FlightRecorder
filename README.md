@@ -24,3 +24,7 @@ Simply reference your postman collection and environment files while running Fli
 ## Examples
 
 Two sample projects are provided as example implementations of mock servers for both iOS and Android. The two implementations are different, but both implementations are made easily maintainable with the use of FlightRecorder.
+
+## Demo
+
+![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/flt_rec_demo.gif)
