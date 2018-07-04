@@ -46,18 +46,24 @@ public extension MockNetworkRequestManager {
         {{#item}}
         // MARK: - {{name}}
         {{name}}Stub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("{{#request.url}}{{path}}{{/request.url}}")) ?? false
+            return (urlRequest.url?.absoluteString.containsString("{{#request.url}}{{{joinedPath}}}{{/request.url}}")) ?? false
         }, response: { urlRequest in
             guard let stubPath = OHPathForFile("{{name}}.json", type(of: self)) else {
                 return OHHTTPStubsResponse()
             }
-            let headers: Dictionary = [{{#request.header}}"{{key}}": "{{value}}",{{/request.header}}]
-
+            let headers: Dictionary = {{^request.header}}[AnyHashable: Any](){{/request.header}}{{#request.header.length}}[{{/request.header.length}}{{#request.header}}"{{key}}": "{{value}}"{{^last}},{{/last}}{{/request.header}}{{#request.header.length}}]{{/request.header.length}}
             let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
+            self.{{name}}Stub.name = "{{name}}Stub"
 
             return stubResponse
         })
 
         {{/item}}
+    }
+}
+
+extension String {
+    func containsString(_ word: String) -> Bool {
+        return self.range(of: word, options: .caseInsensitive) != nil
     }
 }

@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "c70ae20e-513c-47d5-a839-07192aa3c497",
+		"name": "Test-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "awww",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "en-US"
+					},
+					{
+						"key": "Domain",
+						"value": "TEST"
+					},
+					{
+						"key": "Country-Code",
+						"value": "US"
+					},
+					{
+						"key": "Channel-Type",
+						"value": "Web"
+					},
+					{
+						"key": "Customer-IP-Address",
+						"value": "127.0.0.1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{reddit-url}}/Awww.json",
+					"host": [
+						"{{reddit-url}}"
+					],
+					"path": [
+						"Awww.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "films_2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{swapi-url}}/films/2",
+					"host": [
+						"{{swapi-url}}"
+					],
+					"path": [
+						"films",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "itunessearch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://itunes.apple.com/search?term=Android+Developer&media=podcast",
+					"protocol": "https",
+					"host": [
+						"itunes",
+						"apple",
+						"com"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "Android+Developer"
+						},
+						{
+							"key": "media",
+							"value": "podcast"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jsonplaceholderposts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1963f22-0a81-465e-9861-49e8443af5f9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "280e0ef7-accf-4e60-827c-e6976716af06",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
