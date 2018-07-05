@@ -46,7 +46,7 @@ If you'd like to generate an automated mock server implementation for Android yo
 ![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/flt_rec_demo.gif)
 
 ## How To
-
+```
 Usage: collection [options]
 
 Options:
@@ -58,7 +58,7 @@ Options:
 -r, --requestManager <requestManager>  the path to the output directory for the MockNetworkRequestManager
 -x, --extension <extension>            extension for mustache template output (e.g. swift, kt, etc...)
 -h, --help                             output usage information
-
+```
 
 ## Examples
 
