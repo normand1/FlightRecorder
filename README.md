@@ -46,16 +46,18 @@ If you'd like to generate an automated mock server implementation for Android yo
 ![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/flt_rec_demo.gif)
 
 ## How To
-  Usage: collection [options] [collection...]
 
-  Options:
+Usage: collection [options]
 
-    -o, --output <output>            The output path
-    -e, --environment <environment>  the relative path to the environment file
-    -v, --verbose                    verbose logging
-    -m, --mustache <mustache>        default mustache template [swift, kotlin] or the relative path to the mustache template file
-    -x, --extension <extension>      extension for mustache template output (e.g. swift, kt, etc...)
-    -h, --help                       output usage information
+Options:
+
+-e, --environment <environment>        the relative path to the environment file
+-o, --output <output>                  The path to the output directory where you would like to save the network request body responses
+-v, --verbose                          verbose logging
+-m, --mustache <mustache>              default mustache template [swift, kotlin] or the relative path to the mustache template file
+-r, --requestManager <requestManager>  the path to the output directory for the MockNetworkRequestManager
+-x, --extension <extension>            extension for mustache template output (e.g. swift, kt, etc...)
+-h, --help                             output usage information
 
 
 ## Examples
