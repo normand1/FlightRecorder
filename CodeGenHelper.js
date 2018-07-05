@@ -30,6 +30,7 @@ module.exports = class CodeGenHelper {
         // console.log("view " + view);
         var templateContents = fs.readFileSync(options.mustache);
         var envContents = fs.readFileSync(options.environment);
+        // console.log('important:' + collection);
         var collectionContents = fs.readFileSync(collection);
         var env_collection_combined = mustache.render(collectionContents.toString(), this.buildMustacheHashFromEnvFile(JSON.parse(envContents.toString())));
         
@@ -40,9 +41,9 @@ module.exports = class CodeGenHelper {
         var combinedTemplateAndCollection = mustache.render(templateContents.toString(), env_collection_combined);
         //console.log("combine env + collection:" + JSON.stringify(env_collection_combined));
         // console.log("output:" + combinedTemplateAndCollection);
-        fs.writeFile((options.output + "/MockNetworkRequestManager." + options.extension), combinedTemplateAndCollection, function (error) {
+        fs.writeFile((options.requestManager + "/MockNetworkRequestManager." + options.extension), combinedTemplateAndCollection, function (error) {
             if (error) { console.error("error writing output" + error); }
-            console.log(chalk.green(`📼   Saved MockNetworkRequestManager.${options.extension} to ${options.output} 📼`));
+            // console.log(chalk.green(`📼   Saved MockNetworkRequestManager.${options.extension} to ${options.output} 📼`));
         });
     }
 

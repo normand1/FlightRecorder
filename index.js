@@ -11,24 +11,26 @@ mustache.escape = function(text) {return text};
 
 program
 .version(require('./package.json').version)
-.command('collection [collection...]')
-.option('-o, --output <output>', 'The output path')
+.command('collection')
 .option('-e, --environment <environment>', 'the relative path to the environment file')
+.option('-o, --output <output>', 'The path to the output directory where you would like to save the network request body responses')
 .option('-v, --verbose', 'verbose logging')
 .option('-m, --mustache <mustache>', 'default mustache template [swift, kotlin] or the relative path to the mustache template file')
+.option('-r, --requestManager <requestManager>', 'the path to the output directory for the MockNetworkRequestManager')
 .option('-x, --extension <extension>', 'extension for mustache template output (e.g. swift, kt, etc...)')
 .action(function (collection, options) {
 
     if (collection) {
-        //console.log("collection: " + process.cwd() + '/' + collection);
+    
         collection = process.cwd() + '/' + collection;
         options.output = options.output ? process.cwd() + '/' + options.output : process.cwd();
         options.environment = options.environment ? process.cwd() + '/' + options.environment : "";
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
         options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null ;
+        options.requestManager = options.requestManager ? process.cwd() + '/' + options.requestManager : process.cwd();
 
         console.log('🚀   Flight Recorder Started!  🚀');
-        
+        //console.log(options);
         if (!Array.isArray(collection)) {
             collection = [collection];
         }
@@ -85,7 +87,7 @@ program
   }
 
   function mapLanguageToFileExtension(langOrPath) {
-      console.log("langOrPath: " + langOrPath)
+      //console.log("langOrPath: " + langOrPath)
     switch (langOrPath) {
         case 'swift':
             return 'swift'
