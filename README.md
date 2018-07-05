@@ -62,7 +62,9 @@ If you'd like to generate an automated mock server implementation for Android yo
 
 Two sample projects are provided as example implementations of mock servers for both iOS and Android. The two implementations are different, but both implementations are made easily maintainable with the use of FlightRecorder.
 
-## iOS Example
+
+<details>
+<summary>iOS Example</summary>
 
 1) Clone this repo and navigate to the `Demo/Projects/FltRecTestApp-iOS/` directory
 2) Open the `FltRecTestApp.xcworkspace` workspace
@@ -87,9 +89,12 @@ MockNetworkRequestManager.sharedManager.startAllMockEndpoints()
 
 You can experiment with this feature by commenting and uncommenting startAllMockEndpoints() in the AppDelegate to switch from live network requests to mocked requests. You can also modify the `jsonplaceholderposts.json` file to see changes reflected in the mocked response. Running FltRec again will overwrite `jsonplaceholderposts.json` and make sure the mock response accurately reflects the response from the server.
 
+</details>
 
+<details>
+  
+<summary>Android Example</summary>
 
+Coming Soon...
 
-
-
-
+</details>
