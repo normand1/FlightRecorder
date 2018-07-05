@@ -23,7 +23,7 @@ Getting all of the mock responses for a whole application can be tedious. Howeve
 
 [Postman](https://www.getpostman.com/postman)
 
-<details open=1>
+<details>
 <summary>iOS</summary>
 
 If you'd like to generate an automated mock server implementation for iOS you'll need [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs). You can see a sample implementation of OHHTTPStubs in the example project.
