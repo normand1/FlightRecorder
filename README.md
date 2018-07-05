@@ -19,6 +19,27 @@ Getting all of the mock responses for a whole application can be tedious. Howeve
 
 `npm install fltrec -g`
 
+## Dependencies
+
+[Postman](https://www.getpostman.com/postman)
+
+<details open=1>
+<summary>iOS</summary>
+
+If you'd like to generate an automated mock server implementation for iOS you'll need [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs). You can see a sample implementation of OHHTTPStubs in the example project.
+Passing the -m flag with "swift" (`-m swift`) will generate a MockNetworkRequestManager class for the referenced Postman Collection.
+
+</details>
+
+<details>
+  
+<summary>Android</summary>
+
+If you'd like to generate an automated mock server implementation for Android you'll need [okhttp/mockwebserver](https://github.com/square/okhttp/tree/master/mockwebserver). You can see a sample implementation of okhttp/mockwebserver in the example project. Passing the -m flag with "kotlin" (`-m kotlin`) will generate a MockNetworkRequestManager class for the referenced Postman Collection.
+
+</details>
+
+
 ## Demo
 
 ![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/flt_rec_demo.gif)
