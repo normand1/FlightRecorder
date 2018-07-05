@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/FlightRecLogo.png)
+![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/FlightRecLogo.png)
 
 
 FlightRecorder (fltrec) is a solution for quickly saving and updating mock data json responses from your APIs.
@@ -21,7 +21,7 @@ Getting all of the mock responses for a whole application can be tedious. Howeve
 
 ## Demo
 
-![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/flt_rec_demo.gif)
+![alt text](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/flt_rec_demo.gif)
 
 ## How To
   Usage: collection [options] [collection...]
