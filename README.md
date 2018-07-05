@@ -21,7 +21,8 @@ Getting all of the mock responses for a whole application can be tedious. Howeve
 
 ## Dependencies
 
-[Postman](https://www.getpostman.com/postman)
+
+[Postman](https://www.getpostman.com/postman) is used to create the API documentation used by FlightRecorder to generate mock server stubs and save responses from the live API.
 
 <details>
 <summary>iOS</summary>
