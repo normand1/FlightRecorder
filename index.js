@@ -26,8 +26,10 @@ program
         options.output = options.output ? process.cwd() + '/' + options.output : process.cwd();
         options.environment = options.environment ? process.cwd() + '/' + options.environment : "";
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
-        options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null ;
+        options.managerTemplate = mapLanguageToManagerTemplate(options.mustache);
+        options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null;
         options.requestManager = options.requestManager ? process.cwd() + '/' + options.requestManager : process.cwd();
+        options.headers = [];
 
         console.log('🚀   Flight Recorder Started!  🚀');
         //console.log(options);
@@ -55,17 +57,23 @@ program
                     console.error('collection run encountered an error:' + err + summary.error);
                 }
                 else {
-                    summary.run.executions.forEach(function (execution) {
+                    summary.run.executions.forEach(function (execution, index, array) {
 
                         if (execution.response == null) {
                             console.error(chalk.red(`No Response from ${execution.item.name}`));
                             return
                         }
                         const outputFileName = codegenHelper.buildFileNameFromName(options.output, execution.item.name);
+                        options.header.push(execution.response.headers.members);
                         fs.writeFile(outputFileName, execution.response.stream, function (error) {
                                 if (error) { console.error("error writing output" + error); }
-                                console.log(chalk.green(`📼   Saved response from ${execution.item.name} to ${outputFileName} 📼`));
+                                console.log(chalk.green(`📼Saved response from ${execution.item.name} to ${outputFileName} 📼`));
                         });
+                        if (index === array.length - 1) {
+                            if (options.mustache) {
+                                codegenHelper.buildMockStubs(options, collect);
+                            }
+                        }
                     });
                 }
             });
@@ -74,6 +82,17 @@ program
             console.log(chalk.red("No collection path found"));
         } 
   });
+
+  function mapLanguageToManagerTemplate(langOrPath) {
+    switch(langOrPath) {
+        case 'swift':
+            return __dirname + '/Templates/MockNetworkRequestManager.swift'
+        case 'kotlin':
+            return null
+        default:
+            return process.cwd() + '/' + langOrPath
+    }
+  }
 
   function mapLanguageToMustachePath(langOrPath) {
     switch (langOrPath) {
