@@ -1,69 +1,23 @@
-
 import Foundation
-import OHHTTPStubs
 
-public class MockNetworkRequestManager {
-
-    public  static var sharedManager = MockNetworkRequestManager()
-
-    {{#item}}
-    var {{name}}Stub: OHHTTPStubsDescriptor!
-    {{/item}}
-
-    // MARK: Helper Functions
-
-    init() {
-        OHHTTPStubs.onStubActivation { (request: URLRequest, stub: OHHTTPStubsDescriptor, response: OHHTTPStubsResponse) in
-            print("[OHHTTPStubs] Request to \(String(describing: request.url)) has been stubbed with \(String(describing: stub.name))")
-        }
-    }
-
-    public func stopAllMockEndpoints() {
-        OHHTTPStubs.removeAllStubs()
-    }
-
-    func getHTTPBodyFromURLRequest(_ urlRequest: URLRequest) -> [String: AnyObject]? {
-        var jsonDict: [String: AnyObject]?
-
-        if let body = (urlRequest as NSURLRequest).ohhttpStubs_HTTPBody() {
-            do {
-                jsonDict = try JSONSerialization.jsonObject(with: body, options: []) as? [String: AnyObject]
-            } catch let error {
-                assert(false, error.localizedDescription)
-            }
-
-            return jsonDict
-        }
-
-        return nil
-    }
+public enum MockStubNames: String {
+    {{#.}}
+    case {{name}}
+    {{/.}}
+    case all
 }
 
 public extension MockNetworkRequestManager {
+    func startMocks(startStubs: [MockStubNames]?) {
 
-    func startAllMockEndpoints() {
-
-        {{#item}}
-        // MARK: - {{name}}
-        {{name}}Stub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("{{#request.url}}{{{joinedPath}}}{{/request.url}}")) ?? false
-        }, response: { urlRequest in
-            guard let stubPath = OHPathForFile("{{name}}.json", type(of: self)) else {
-                return OHHTTPStubsResponse()
-            }
-            let headers: Dictionary = {{^request.header}}[AnyHashable: Any](){{/request.header}}{{#request.header.length}}[{{/request.header.length}}{{#request.header}}"{{key}}": "{{value}}"{{^last}},{{/last}}{{/request.header}}{{#request.header.length}}]{{/request.header.length}}
-            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
-            self.{{name}}Stub.name = "{{name}}Stub"
-
-            return stubResponse
-        })
-
-        {{/item}}
-    }
-}
-
-extension String {
-    func containsString(_ word: String) -> Bool {
-        return self.range(of: word, options: .caseInsensitive) != nil
+        guard let startStubs = startStubs else {
+            return
+        }
+        {{#.}}
+        // MARK: {{name}}
+        if startStubs.contains(.{{name}}) || startStubs.contains(.all) {
+            responseStubs.append(stubFactory(containsString: "{{#request.url}}{{{joinedPath}}}{{/request.url}}", relativePathForMockJSONFile: "{{name}}.json", stubName: "{{name}}", httpMethod: "{{request.method}}", headerResponse: {{^responseHeader}}[AnyHashable: Any](){{/responseHeader}}{{#responseHeader.length}}[{{/responseHeader.length}}{{#responseHeader}}"{{key}}": "{{value}}"{{^last}}, {{/last}}{{/responseHeader}}{{#responseHeader.length}}]{{/responseHeader.length}}))
+        }
+        {{/.}}
     }
 }

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/davidnorman/Documents/MyProjects/NewmanMockResponses/Demo/Projects/PetStoreDemo/app/src/main/assets"/><source path="/Users/davidnorman/Documents/MyProjects/NewmanMockResponses/Demo/Projects/PetStoreDemo/app/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/davidnorman/Documents/MyProjects/NewmanMockResponses/Demo/Projects/PetStoreDemo/app/src/debug/assets"/></dataSet></merger>

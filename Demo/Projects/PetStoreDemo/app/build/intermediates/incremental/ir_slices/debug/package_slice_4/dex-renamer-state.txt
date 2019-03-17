@@ -1,0 +1,4 @@
+#Tue Aug 14 17:12:54 PDT 2018
+base.0=/Users/davidnorman/Documents/MyProjects/NewmanMockResponses/Demo/Projects/PetStoreDemo/app/build/intermediates/transforms/dexMerger/debug/42
+path.0=classes.dex
+renamed.0=classes.dex

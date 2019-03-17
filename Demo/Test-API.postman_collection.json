@@ -1,53 +1,10 @@
 {
 	"info": {
-		"_postman_id": "c70ae20e-513c-47d5-a839-07192aa3c497",
+		"_postman_id": "23d3f394-58f9-4b97-adaf-2b4fad2758b3",
 		"name": "Test-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "awww",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept-Language",
-						"value": "en-US"
-					},
-					{
-						"key": "Domain",
-						"value": "TEST"
-					},
-					{
-						"key": "Country-Code",
-						"value": "US"
-					},
-					{
-						"key": "Channel-Type",
-						"value": "Web"
-					},
-					{
-						"key": "Customer-IP-Address",
-						"value": "127.0.0.1"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {},
-				"url": {
-					"raw": "{{reddit-url}}/Awww.json",
-					"host": [
-						"{{reddit-url}}"
-					],
-					"path": [
-						"Awww.json"
-					]
-				}
-			},
-			"response": []
-		},
 		{
 			"name": "films_2",
 			"request": {
@@ -62,6 +19,28 @@
 					"path": [
 						"films",
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jsonplaceholderposts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/1",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"1"
 					]
 				}
 			},
@@ -93,28 +72,6 @@
 							"key": "media",
 							"value": "podcast"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "jsonplaceholderposts",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "https://jsonplaceholder.typicode.com/posts/1",
-					"protocol": "https",
-					"host": [
-						"jsonplaceholder",
-						"typicode",
-						"com"
-					],
-					"path": [
-						"posts",
-						"1"
 					]
 				}
 			},

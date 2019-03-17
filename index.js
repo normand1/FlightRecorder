@@ -39,10 +39,6 @@ program
 
         collection.forEach(function (collect) {
 
-            if (options.mustache) {
-                codegenHelper.buildMockStubs(options, collect);
-            }
-
             newman.run({
                 collection: require(collect),
                 reporters: 'cli',
@@ -64,7 +60,7 @@ program
                             return
                         }
                         const outputFileName = codegenHelper.buildFileNameFromName(options.output, execution.item.name);
-                        options.header.push(execution.response.headers.members);
+                        options.headers.push(execution.response.headers.members);
                         fs.writeFile(outputFileName, execution.response.stream, function (error) {
                                 if (error) { console.error("error writing output" + error); }
                                 console.log(chalk.green(`📼Saved response from ${execution.item.name} to ${outputFileName} 📼`));

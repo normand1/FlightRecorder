@@ -16,9 +16,7 @@ module.exports = class CodeGenHelper {
         var resultHash = {};
         
         if (env) {
-            
             env.values.forEach(function(value){
-                // console.log("test: " + value);
                 resultHash[value.key] = value.value;
             });
             }
@@ -28,30 +26,36 @@ module.exports = class CodeGenHelper {
 
     static buildMockStubs(options, collection) {
         var templateContents = fs.readFileSync(options.mustache);
-        var managerTemplateContents = fs.readFileSync(options.managerTemplate);
-        var envContents = fs.readFileSync(options.environment);
-        // console.log('important:' + collection);
+        var managerTemplateContents = fs.readFileSync(options.managerTemplate, 'utf8');
+        var envContents = JSON.parse(fs.readFileSync(options.environment, 'utf8'));
         var collectionContents = fs.readFileSync(collection);
-        var mustacheHash = this.buildMustacheHashFromEnvFile(JSON.parse(envContents.toString()));
+        var mustacheHash = this.buildMustacheHashFromEnvFile(envContents);
         collectionContents = this.fixPostmanCollectionTokensForHash(collectionContents, mustacheHash);
-        var env_collection_combined = mustache.render(collectionContents.toString(), this.buildMustacheHashFromEnvFile(JSON.parse(envContents.toString())));
+        var env_collection_combined = mustache.render(collectionContents.toString(), this.buildMustacheHashFromEnvFile(envContents));
         
         env_collection_combined =  this.addPathToHash(JSON.parse(env_collection_combined));
         env_collection_combined =  this.addLastPathToHash(env_collection_combined);
         env_collection_combined =  this.addLastHeaderToHash(env_collection_combined);
-        // console.log("final:" + templateContents.toString());
-        env_collection_combined.item[0].item = this.fixVariableNamesForSwift(env_collection_combined.item[0].item);
-        env_collection_combined.item[0].item = this.markLastHeader(env_collection_combined.item[0].item);
-        env_collection_combined.item[0] = this.addHeaderResponsesToRequests(env_collection_combined.item[0].item. options.headers);
-        var combinedTemplateAndCollection = mustache.render(templateContents.toString(), env_collection_combined.item[0]);
+        console.log("final:") 
+
+        env_collection_combined.item = this.fixVariableNamesForSwift(env_collection_combined.item);
+        
+        //console.log(templateContents.toString());
+        //console.log(env_collection_combined.item);
+        env_collection_combined.item = this.addHeaderResponsesToRequests(env_collection_combined.item, options.headers);
+        env_collection_combined.item = this.markLastHeader(env_collection_combined.item);
+        var combinedTemplateAndCollection = mustache.render(templateContents.toString(), env_collection_combined.item);
+        //console.log(combinedTemplateAndCollection);
         var collectionName = this.getCollectionName(env_collection_combined);
-        fs.writeFile((options.requestManager + "/MockNetworkRequestManager+" + collectionName + "." + options.extension), combinedTemplateAndCollection, function (error) {
+        console.log(env_collection_combined.item);
+        fs.writeFile(options.output + "/MockNetworkRequestManager+" + collectionName + "." + options.extension, combinedTemplateAndCollection, function (error) {
             if (error) { console.error("error writing output" + error); }
-            console.log(chalk.green(`📼Saved MockNetworkRequestManager.${options.extension} to ${options.output} 📼`));
+            console.log(chalk.green(`📼Saved MockNetworkRequestManager+${collectionName}.${options.extension} to ` + options.requestManager + "/MockNetworkRequestManager+" + collectionName + "." + options.extension + " 📼"));
         });
-        fs.writeFile((options.requestManager + "/MockNetworkRequestManager." + options.extension), managerTemplateContents.toString(), function (error) {
+
+        fs.writeFile(options.output + "/MockNetworkRequestManager." + options.extension, managerTemplateContents, function (error) {
             if (error) { console.error("error writing output" + error); }
-            console.log(chalk.green(`📼Saved MockNetworkRequestManager.${options.extension} to ${options.output} 📼`));
+            console.log(chalk.green(`📼Saved MockNetworkRequestManager.${options.extension} to ` + options.output + "/MockNetworkRequestManager." + options.extension + "📼"));
         });
     }
     
@@ -85,9 +89,12 @@ module.exports = class CodeGenHelper {
     static markLastHeader(hash) {
         if (hash) {
             for (var item in hash) {
-                var headers = hash[item].request.header;
-                if (headers) {
+                var headers = hash[item].responseHeader;
+                if (headers.length > 0) {
                     for (var i in headers) {
+                        console.log(headers[i].value);
+                        headers[i].value = headers[i].value.replaceAll("\"", "'");
+                        console.log(headers[i].value);
                         headers[i].last = false;
                     }
                     headers[headers.length-1].last = true;
@@ -99,9 +106,9 @@ module.exports = class CodeGenHelper {
     
     static fixPostmanCollectionTokensForHash(collection, hash) {
         if (hash) {
-            Objects.keys(hash).forEach(function(key) {
+            Object.keys(hash).forEach(function(key) {
                 try {
-                    var possObj = JSON.parse(hash[key]);
+                    var possObj = hash[key];
                     if (typeof possObj == 'object') {
                         collection = collection.toString().replace('"{{' + key + '}}"', "{{" + key + "}}" );
                     }

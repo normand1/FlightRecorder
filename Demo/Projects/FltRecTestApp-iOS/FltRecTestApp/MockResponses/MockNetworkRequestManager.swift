@@ -1,110 +1,50 @@
-
 import Foundation
 import OHHTTPStubs
 
 public class MockNetworkRequestManager {
 
-    public  static var sharedManager = MockNetworkRequestManager()
-
-    var awwwStub: OHHTTPStubsDescriptor!
-    var films_2Stub: OHHTTPStubsDescriptor!
-    var itunessearchStub: OHHTTPStubsDescriptor!
-    var jsonplaceholderpostsStub: OHHTTPStubsDescriptor!
-
-    // MARK: Helper Functions
+    public static var sharedManager = MockNetworkRequestManager()
+    var responseStubs = [OHHTTPStubsDescriptor]()
 
     init() {
-        OHHTTPStubs.onStubActivation { (request: URLRequest, stub: OHHTTPStubsDescriptor, response: OHHTTPStubsResponse) in
-            print("[OHHTTPStubs] Request to \(String(describing: request.url)) has been stubbed with \(String(describing: stub.name))")
+        OHHTTPStubs.onStubActivation { (request: URLRequest, stub: OHHTTPStubsDescriptor, response: OHHTTPStubsResponse) in 
+            print("Request: \(String(describing: request.url)) has been stubbed with \(String(describing: stub.name))")
         }
     }
 
-    public func stopAllMockEndpoints() {
-        OHHTTPStubs.removeAllStubs()
-    }
-
-    func getHTTPBodyFromURLRequest(_ urlRequest: URLRequest) -> [String: AnyObject]? {
-        var jsonDict: [String: AnyObject]?
-
-        if let body = (urlRequest as NSURLRequest).ohhttpStubs_HTTPBody() {
-            do {
-                jsonDict = try JSONSerialization.jsonObject(with: body, options: []) as? [String: AnyObject]
-            } catch let error {
-                assert(false, error.localizedDescription)
-            }
-
-            return jsonDict
+func stubFactory(containsString: String, relativePathForMockJSONFile: String, stubName: String, httpMethod: String = "GET", featureKey: String? = nil, headerResponse: [String: Any]? = nil) -> OHHTTPStubsDescriptor {
+    return stub(condition: { URLRequest in 
+        return URLRequest.url?.absoluteString.contains(containsString) ?? false && URLRequest.httpMethod == httpMethod
+    }, response: { URLRequest in 
+        guard let stubPath = OHPathForFile(relativePathForMockJSONFile, type(of: self)) else {
+            assert(false)
+            return OHHTTPStubsResponse()
         }
-
-        return nil
-    }
+        let headers: Dictionary = headerResponse ?? ["Accept": "application/json"]
+        let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
+        return stubResponse
+    })
 }
 
-public extension MockNetworkRequestManager {
-
-    func startAllMockEndpoints() {
-
-        // MARK: - awww
-        awwwStub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("/Awww.json")) ?? false
-        }, response: { urlRequest in
-            guard let stubPath = OHPathForFile("awww.json", type(of: self)) else {
-                return OHHTTPStubsResponse()
-            }
-            let headers: Dictionary = ["Accept-Language": "en-US","Domain": "TEST","Country-Code": "US","Channel-Type": "Web","Customer-IP-Address": "127.0.0.1","Content-Type": "application/json"]
-            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
-            self.awwwStub.name = "awwwStub"
-
-            return stubResponse
-        })
-
-        // MARK: - films_2
-        films_2Stub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("/films/2")) ?? false
-        }, response: { urlRequest in
-            guard let stubPath = OHPathForFile("films_2.json", type(of: self)) else {
-                return OHHTTPStubsResponse()
-            }
-            let headers: Dictionary = [AnyHashable: Any]()
-            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
-            self.films_2Stub.name = "films_2Stub"
-
-            return stubResponse
-        })
-
-        // MARK: - itunessearch
-        itunessearchStub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("/search")) ?? false
-        }, response: { urlRequest in
-            guard let stubPath = OHPathForFile("itunessearch.json", type(of: self)) else {
-                return OHHTTPStubsResponse()
-            }
-            let headers: Dictionary = [AnyHashable: Any]()
-            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
-            self.itunessearchStub.name = "itunessearchStub"
-
-            return stubResponse
-        })
-
-        // MARK: - jsonplaceholderposts
-        jsonplaceholderpostsStub = stub(condition: { urlRequest in
-            return (urlRequest.url?.absoluteString.containsString("/posts/1")) ?? false
-        }, response: { urlRequest in
-            guard let stubPath = OHPathForFile("jsonplaceholderposts.json", type(of: self)) else {
-                return OHHTTPStubsResponse()
-            }
-            let headers: Dictionary = [AnyHashable: Any]()
-            let stubResponse = OHHTTPStubsResponse(fileAtPath: stubPath, statusCode: 200, headers: headers)
-            self.jsonplaceholderpostsStub.name = "jsonplaceholderpostsStub"
-
-            return stubResponse
-        })
-
-    }
+public func startAllMockEndpoints() {
+    startMocks(startStubs: [.all])
 }
 
-extension String {
-    func containsString(_ word: String) -> Bool {
-        return self.range(of: word, options: .caseInsensitive) != nil
+public func stopAllMockEndpoints() {
+    OHHTTPStubs.removeAllStubs()
+}
+
+func getHTTPBodyFromURLRequest(_ urlRequest: URLRequest) -> [String: AnyObject]? {
+    var jsonDict: [String: AnyObject]?
+
+    if let body = (urlRequest as NSURLRequest).ohhttpStubs_HTTPBody() {
+        do {
+            jsonDict = try JSONSerialization.jsonObject(with: body, options: []) as? [String: AnyObject]
+        } catch {
+            assert(false, error.localizedDescription)
+        }
+        return jsonDict
+    }
+    return nil
     }
 }

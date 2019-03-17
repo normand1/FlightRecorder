@@ -19,6 +19,7 @@ class ViewController: UIViewController {
             
             if let json = response.result.value {
                 print("JSON: \(json)")
+                print("Headers: \( print(response.response?.allHeaderFields))")
             }
         }
     }
