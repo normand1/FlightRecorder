@@ -6,6 +6,7 @@ const codegenHelper = require('./CodeGenHelper');
 const chalk = require('chalk');
 const mustache = require('mustache');
 var fs = require('fs'); 
+var path = require('path');
 
 mustache.escape = function(text) {return text};
 
@@ -22,25 +23,22 @@ program
 
     if (collection) {
     
-        collection = process.cwd() + '/' + collection;
-        options.output = options.output ? process.cwd() + '/' + options.output : process.cwd();
-        options.environment = options.environment ? process.cwd() + '/' + options.environment : "";
+        collection = path.relative(process.cwd(), collection);
+        options.output = path.relative(process.cwd(), options.output);
+        options.environment = path.relative(process.cwd(), options.environment);
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
         options.managerTemplate = mapLanguageToManagerTemplate(options.mustache);
         options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null;
         options.requestManager = options.requestManager ? process.cwd() + '/' + options.requestManager : process.cwd();
         options.headers = [];
 
-        console.log('🚀   Flight Recorder Started!  🚀');
-        //console.log(options);
+        console.log('🚀  Flight Recorder Started!  🚀');
         if (!Array.isArray(collection)) {
             collection = [collection];
         }
-
         collection.forEach(function (collect) {
-
             newman.run({
-                collection: require(collect),
+                collection: collect,
                 reporters: 'cli',
                 silent: options.verbose ? false : true,
                 environment: options.environment
@@ -49,6 +47,7 @@ program
                     console.error(err);
                 }
             }).on('done', function (err, summary) {
+                
                 if (err || summary.error) {
                     console.error('collection run encountered an error:' + err + summary.error);
                 }

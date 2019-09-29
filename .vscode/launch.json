@@ -1,16 +1,32 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/index.js",
-            "console": "internalConsole"
-        }
-    ]
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "my test",
+        "program": "${workspaceFolder}/index.js",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+            "run-script",
+            "debug"
+        ],
+        "args": ["collection", "Test-API.postman_collection.json", "-e", "/Users/davidnorman/Documents/myProjects/FlightRecorder/test-env.postman_environment.json", "-m", "swift", "-o", "Projects/FltRecTestApp-iOS/FltRecTestApp/MockResponses"],    
+        "port": 9229
+    },
+        {
+            "name": "Launch via npm",
+            "type": "node",
+            "request": "launch",
+            "cwd": "/Users/davidnorman/Documents/myProjects/FlightRecorder/Demo/",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run-script", "debug"],
+            "args": ["collection", "Test-API.postman_collection.json", "-e", "/Users/davidnorman/Documents/myProjects/FlightRecorder/test-env.postman_environment.json", "-m", "swift", "-o", "Projects/FltRecTestApp-iOS/FltRecTestApp/MockResponses"],    
+            "port": 9229
+        }
+    ]
 }
+

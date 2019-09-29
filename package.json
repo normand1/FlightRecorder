@@ -4,11 +4,12 @@
     "type": "git",
     "url": "https://github.com/normand1/FlightRecorder"
   },
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "FlightRecorder (fltrec) is a solution for quickly saving and updating mock data json responses from your APIs. ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --nolazy --inspect-brk=9229 index.js"
   },
   "author": "David Norman",
   "license": "MIT",

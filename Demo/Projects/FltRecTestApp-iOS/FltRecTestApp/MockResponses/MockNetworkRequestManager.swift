@@ -27,7 +27,7 @@ func stubFactory(containsString: String, relativePathForMockJSONFile: String, st
 }
 
 public func startAllMockEndpoints() {
-    startMocks(startStubs: [.all])
+    // add calls to generated mock endpoints here
 }
 
 public func stopAllMockEndpoints() {
