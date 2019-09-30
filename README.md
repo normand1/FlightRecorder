@@ -34,9 +34,13 @@ Usage: collection [options]
 
 Options:
 
+
 -e, --environment <environment>        the relative path to the environment file
 -o, --output <output>                  The path to the output directory where you would like to save the network request body responses
 -v, --verbose                          verbose logging
+-m, --mustache <mustache>              default mustache template [swift, kotlin] or the relative path to the mustache template file
+-r, --requestManager <requestManager>  the path to the output directory for the MockNetworkRequestManager
+-x, --extension <extension>            extension for mustache template output (e.g. swift, kt, etc...)
 -h, --help                             output usage information
 ```
 
