@@ -53,4 +53,6 @@ This postman collection includes folders which contain requests to various Star 
 Next, run this command in the terminal in the `Demo_MockServerOnly` directory:
 `fltrec collection SWAPI.postman_collection.json`
 
+Now you should have a new folder in the current directory named `api` (mirroring what you see in postman) and that folder should be full of saved json responses from the Star Wars API.
 
+![folder structure](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/api_folder_structure.png)
