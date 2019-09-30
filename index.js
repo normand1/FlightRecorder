@@ -7,6 +7,11 @@ const chalk = require('chalk');
 const mustache = require('mustache');
 var fs = require('fs'); 
 var path = require('path');
+var mkdirp = require('mkdirp');
+
+
+var pathMap = {};
+
 
 mustache.escape = function(text) {return text};
 
@@ -24,7 +29,7 @@ program
     if (collection) {
     
         collection = path.relative(process.cwd(), collection);
-        options.output = path.relative(process.cwd(), options.output);
+        options.output = options.output != undefined ? options.output : process.cwd();
         options.environment = path.relative(process.cwd(), options.environment);
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
         options.managerTemplate = mapLanguageToManagerTemplate(options.mustache);
@@ -32,11 +37,13 @@ program
         options.requestManager = options.requestManager ? process.cwd() + '/' + options.requestManager : process.cwd();
         options.headers = [];
 
-        console.log('🚀  Flight Recorder Started!  🚀');
+        console.log('🚀 Flight Recorder Started!  🚀');
         if (!Array.isArray(collection)) {
             collection = [collection];
         }
         collection.forEach(function (collect) {
+            buildPathMapFromCollection(collect);
+            console.log(pathMap);
             newman.run({
                 collection: collect,
                 reporters: 'cli',
@@ -58,17 +65,22 @@ program
                             console.error(chalk.red(`No Response from ${execution.item.name}`));
                             return
                         }
-                        const outputFileName = codegenHelper.buildFileNameFromName(options.output, execution.item.name);
+                        const outputFileName = codegenHelper.buildFileNameFromName(options.output, execution.item.name, pathMap);
+                        var fileDirectory = outputFileName;
                         options.headers.push(execution.response.headers.members);
-                        fs.writeFile(outputFileName, execution.response.stream, function (error) {
+                        fileDirectory = fileDirectory.substring(0, fileDirectory.lastIndexOf("/"));
+                        mkdirp(fileDirectory, function(err) { 
+                            fs.writeFile(outputFileName, execution.response.stream, function (error) {
                                 if (error) { console.error("error writing output" + error); }
                                 console.log(chalk.green(`📼Saved response from ${execution.item.name} to ${outputFileName} 📼`));
-                        });
-                        if (index === array.length - 1) {
-                            if (options.mustache) {
-                                codegenHelper.buildMockStubs(options, collect);
+                            });
+                            if (index === array.length - 1) {
+                                if (options.mustache) {
+                                    codegenHelper.buildMockStubs(options, collect);
+                                }
                             }
-                        }
+                        });
+                        
                     });
                 }
             });
@@ -77,6 +89,25 @@ program
             console.log(chalk.red("No collection path found"));
         } 
   });
+
+  function buildPathMapFromCollection(postmanCollection) {
+    var text = fs.readFileSync(postmanCollection,'utf8') 
+    var collection = JSON.parse(text);
+    var test = buildItemNamesMap(collection, ["/"])
+  }
+
+  function buildItemNamesMap(collection, aPath) {
+    if (collection.item == null) {
+        pathMap[collection.name] = path.join(aPath);
+        return
+    }
+    if (collection.name != undefined) {
+        aPath += collection.name + "/";
+    }
+    collection.item.forEach(function (item) {
+        buildItemNamesMap(item, aPath);
+    })
+  }
 
   function mapLanguageToManagerTemplate(langOrPath) {
     switch(langOrPath) {

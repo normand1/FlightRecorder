@@ -6,9 +6,10 @@ const chalk = require('chalk');
 
 module.exports = class CodeGenHelper {
 
-    static buildFileNameFromName(outputPath, requestName) {
+    static buildFileNameFromName(outputPath, requestName, pathMap) {
+        var path = pathMap[requestName];
         requestName = requestName.replaceAll('/', '_');
-        return outputPath + `/${requestName}.json`
+        return outputPath + path + `${requestName}.json`
     }
 
     static buildMustacheHashFromEnvFile(env) {
