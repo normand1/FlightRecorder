@@ -42,5 +42,15 @@ Options:
 
 ## Example
 
+The Mock JSON Files are created through the use of a Postman Collection JSON file. You can easily see an example in action by changing directory to the `Demo_MockServerOnly` folder.
+
+When you first clone this repo the only file in this directory will be the Star Wars API Postman Collection named: `SWAPI.postman_collection.json` 
+
+![Postman Example](https://raw.githubusercontent.com/normand1/FlightRecorder/master/ReadMeAssets/postman_swapi.png)
+
+This postman collection includes folders which contain requests to various Star Wars API endpoints. This folder structure will be re-created and the responses to these requests will be placed in folders in the selected directory mirroring the structure in Postman. 
+
+Next, run this command in the terminal in the `Demo_MockServerOnly` directory:
+`fltrec collection SWAPI.postman_collection.json`
 
 
