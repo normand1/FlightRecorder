@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "29769cce-e142-4646-acd8-5074a178b863",
+		"name": "SWAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "people",
+					"item": [
+						{
+							"name": "https://swapi.co/api/people/2",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://swapi.co/api/people/2",
+									"protocol": "https",
+									"host": [
+										"swapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"people",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "films",
+					"item": [
+						{
+							"name": "https://swapi.co/api/films/2/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://swapi.co/api/films/2/",
+									"protocol": "https",
+									"host": [
+										"swapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"films",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "species",
+					"item": [
+						{
+							"name": "https://swapi.co/api/species/2/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://swapi.co/api/species/2/",
+									"protocol": "https",
+									"host": [
+										"swapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"species",
+										"2",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "planets",
+					"item": [
+						{
+							"name": "https://swapi.co/api/planets/1/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://swapi.co/api/planets/1/",
+									"protocol": "https",
+									"host": [
+										"swapi",
+										"co"
+									],
+									"path": [
+										"api",
+										"planets",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
