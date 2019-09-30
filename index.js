@@ -30,7 +30,7 @@ program
     
         collection = path.relative(process.cwd(), collection);
         options.output = options.output != undefined ? options.output : process.cwd();
-        options.environment = path.relative(process.cwd(), options.environment);
+        options.environment = options.environment != undefined ? path.relative(process.cwd(), options.environment) : null;
         options.extension = mapLanguageToFileExtension(options.mustache) ? mapLanguageToFileExtension(options.mustache) : options.extension;
         options.managerTemplate = mapLanguageToManagerTemplate(options.mustache);
         options.mustache = options.mustache ? mapLanguageToMustachePath(options.mustache) : null;
